@@ -1,0 +1,33 @@
+.markdown-body pre,
+.markdown-body code,
+.markdown-body tt {
+  tab-size: 4;
+  -moz-tab-size: 4;
+}
+
+.markdown-body {
+  padding: 16px 16px 32px 16px;
+}
+
+.markdown-body .codeblock-file {
+  padding: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body .codeblock-file>span {
+  display: inline-block;
+  font-size: 100%;
+  font-family: "ui-monospace", "SFMono-Regular", "SF Mono", "Menlo", "Consolas", "Liberation Mono", monospace;
+  background-color: #161b22;
+  padding: 2px 16px;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+
+.markdown-body .codeblock-file+pre {
+  border-top-left-radius: 0;
+}
+
+body {
+  background-color: #0d1117;
+}
