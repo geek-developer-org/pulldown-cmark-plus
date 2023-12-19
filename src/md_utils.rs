@@ -13,7 +13,7 @@ pub fn to_html(markdown: &str) -> String {
                 None => (cowstr.trim(), ""),
             };
             if !file.is_empty() {
-                codeblock.push_str("<div class=\"codeblock-title\"><span>");
+                codeblock.push_str("<div class=\"codeblock-file\"><span>");
                 codeblock.push_str(file);
                 codeblock.push_str("</span></div>\n");
             }
