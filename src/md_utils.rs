@@ -28,6 +28,7 @@ pub fn to_html(markdown: &str) -> String {
                     && part.trim() != "hl_lines"
                     && part.trim() != "hide_lines"
                     && part.trim() != "file"
+                    && part.trim() != "no_style"
                 {
                     lang = part.trim();
                 }
