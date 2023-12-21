@@ -6,12 +6,33 @@ pub fn to_html(markdown: &str) -> String {
     let parser = Parser::new_ext(markdown, Options::all()).map(|event| match event {
         Event::Start(Tag::CodeBlock(CodeBlockKind::Fenced(ref cowstr))) => {
             let cowstr = cowstr.as_ref().to_owned();
-
             let mut codeblock = String::from("");
-            let (lang, file) = match cowstr.find(":") {
-                Some(pos) => (cowstr[..pos].trim(), cowstr[pos + 1..].trim()),
-                None => (cowstr.trim(), ""),
-            };
+
+            let mut lang: &str = "";
+            let mut file: &str = "";
+            for part in text.split(',').collect::<Vec<&str>>() {
+                if !lang.is_empty() && !file.is_empty() {
+                    break;
+                }
+                if let Some(pos) = part.find("=") {
+                    if file.is_empty() {
+                        let (key, val) = (part[..pos].trim(), part[pos + 1..].trim());
+                        if key == "file" && !val.is_empty() {
+                            file = val;
+                        }
+                    }
+                } else if lang.is_empty()
+                    && !part.trim().is_empty()
+                    && part.trim() != "linenostart"
+                    && part.trim() != "linenos"
+                    && part.trim() != "hl_lines"
+                    && part.trim() != "hide_lines"
+                    && part.trim() != "file"
+                {
+                    lang = part.trim();
+                }
+            }
+
             if !file.is_empty() {
                 codeblock.push_str("<div class=\"codeblock-file\"><span>");
                 codeblock.push_str(file);
