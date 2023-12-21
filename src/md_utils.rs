@@ -10,7 +10,7 @@ pub fn to_html(markdown: &str) -> String {
 
             let mut lang: &str = "";
             let mut file: &str = "";
-            for part in text.split(',').collect::<Vec<&str>>() {
+            for part in cowstr.split(',').collect::<Vec<&str>>() {
                 if !lang.is_empty() && !file.is_empty() {
                     break;
                 }
