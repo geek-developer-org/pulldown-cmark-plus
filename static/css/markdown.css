@@ -1017,10 +1017,6 @@
   -moz-tab-size: 4;
 }
 
-.markdown-body {
-  padding: 16px 16px 32px 16px;
-}
-
 .markdown-body div:has(+pre>code):has(span) {
   padding: 0;
   margin-bottom: 0;
@@ -1047,10 +1043,6 @@
 
 .markdown-body pre:has(code) {
   border: 1px solid var(--color-codeblock-border);
-}
-
-body {
-  background-color: var(--color-canvas-default);
 }
 
 .markdown-body ul>li:has(input[type=checkbox]) {
